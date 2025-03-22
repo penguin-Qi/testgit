@@ -1,0 +1,13 @@
+set_project("Dibuix")
+set_targetdir("$(buildir)/dist")
+target("Dibuix")
+    set_kind("binary")
+    add_links("glfw","GLEW","GL", "GLU","cmark")
+    -- add_linkdirs("/usr/lib/x86_64-linux-gnu")  -- 添加库文件路径
+    add_linkdirs("/usr/local/lib")
+    add_includedirs("/usr/local/include","/usr/include")
+    add_includedirs("./src/utils/stb")
+    add_includedirs("/usr/include/GL")
+    add_files("./src/*.cpp","./src/filetree/*.cpp","./src/editor/*.cpp","./src/preview/*.cpp", "./src/imgui/*.cpp")
+    add_includedirs("./src", "./src/imgui","./src/filetree","./src/utils","./src/editor","./src/preview")
+    add_cxxflags("-std=c++20", "-g", "-Wall", "-Wformat")
